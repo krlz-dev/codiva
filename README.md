@@ -20,15 +20,6 @@ Codiva es tu socio estratégico en la creación de sitios web profesionales para
 - 🤝 Soporte personalizado
 - 💰 Precios competitivos
 
-## 🛠️ Tecnologías
-
-Nuestro stack tecnológico incluye:
-
-- [Astro](https://astro.build) - Framework web moderno
-- HTML5 y CSS3
-- JavaScript moderno
-- Optimización de rendimiento
-- SEO avanzado
 
 ## 🚀 Desarrollo Local
 
@@ -45,13 +36,7 @@ npm run dev
 npm run build
 ```
 
-## 📞 Contacto
-
-¿Listo para transformar tu presencia digital? ¡Contáctanos!
-
-- 🌐 [www.codiva.com](https://www.codiva.com)
-- 📧 info@codiva.com
-- 📱 +123 456 789
+ 
 
 ## 📝 Licencia
 
