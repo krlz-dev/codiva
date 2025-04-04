@@ -1,57 +1,117 @@
 ---
 import PricingCard from './PricingCard.astro';
 
-const plans = [
+interface Plan {
+  planId: string;
+  title: string;
+  price: string;
+  badge: string;
+  isPopular?: boolean;
+  selected?: boolean;
+  includedFeatures: string[];
+  buttonText: string;
+}
+
+// Lista completa de servicios disponibles, agrupados por categoría
+const allServices = {
+  'Diseño y Desarrollo': [
+    'Landing page profesional',
+    'Sitio web completo',
+    'Diseño responsive',
+    'Optimización para móviles',
+    'Hasta 5 secciones personalizadas',
+    'Blog integrado',
+    'Panel de administración'
+  ],
+  'Funcionalidades': [
+    'Formulario de contacto básico',
+    'Formularios avanzados',
+    'Integración con redes sociales',
+    'Certificado SSL',
+    'Google Analytics'
+  ],
+  'SEO y Marketing': [
+    'Optimización SEO básica',
+    'SEO avanzado',
+    'Integración con Google Business'
+  ],
+  'Soporte y Extras': [
+    'Dominio .cl por 1 año',
+    '1 mes de soporte',
+    '3 meses de soporte',
+    '6 meses de soporte',
+    'Capacitación de uso'
+  ]
+};
+
+const plans: Plan[] = [
   {
+    planId: 'basic',
     title: 'Plan Básico',
     price: '$149.900',
     badge: 'Ideal para Emprendedores',
-    features: [
+    includedFeatures: [
       'Landing page profesional',
-      'Formulario de contacto',
       'Diseño responsive',
       'Optimización para móviles',
+      'Formulario de contacto básico',
+      'Certificado SSL',
+      'Optimización SEO básica',
       '1 mes de soporte'
     ],
-    buttonText: 'Comenzar Ahora',
-    buttonVariant: 'outline-primary'
+    buttonText: 'Comenzar Ahora'
   },
   {
+    planId: 'standard',
     title: 'Plan Estándar',
     price: '$299.900',
     badge: 'Para Pequeñas Empresas',
     isPopular: true,
-    features: [
+    selected: true,
+    includedFeatures: [
+      'Landing page profesional',
       'Hasta 5 secciones personalizadas',
+      'Diseño responsive',
+      'Optimización para móviles',
       'Formularios avanzados',
       'Integración con redes sociales',
+      'Certificado SSL',
+      'Google Analytics',
       'Optimización SEO básica',
+      'Integración con Google Business',
       '3 meses de soporte',
-      'Google Analytics'
+      'Capacitación de uso'
     ],
-    buttonText: 'Elegir Plan',
-    buttonVariant: 'primary'
+    buttonText: 'Elegir Plan'
   },
   {
+    planId: 'premium',
     title: 'Plan Premium',
     price: '$599.900',
     badge: 'Solución Completa',
-    features: [
+    includedFeatures: [
       'Sitio web completo',
       'Blog integrado',
+      'Panel de administración',
+      'Diseño responsive',
+      'Optimización para móviles',
+      'Formularios avanzados',
+      'Integración con redes sociales',
+      'Certificado SSL',
+      'Google Analytics',
       'SEO avanzado',
+      'Integración con Google Business',
       'Dominio .cl por 1 año',
       '6 meses de soporte',
-      'Certificado SSL',
-      'Panel de administración'
+      'Capacitación de uso'
     ],
-    buttonText: 'Contactar',
-    buttonVariant: 'outline-primary'
+    buttonText: 'Contactar'
   }
 ];
+
 ---
 
-<section class="container py-5" data-aos="fade-up">
+<section class="container py-5" data-aos="fade-up" id="pricing-section">
   <div class="row justify-content-center">
     <div class="col-lg-8 text-center">
       <h2 class="display-5 fw-bold mb-3">Nuestros Planes</h2>

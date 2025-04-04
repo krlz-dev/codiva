@@ -4,9 +4,10 @@ interface Props {
   price: string;
   badge: string;
   isPopular?: boolean;
-  features: string[];
+  selected?: boolean;
+  includedFeatures: string[];
   buttonText: string;
-  buttonVariant?: 'primary' | 'outline-primary';
+  planId: string;
 }
 
 const {
@@ -14,39 +15,301 @@ const {
   price,
   badge,
   isPopular = false,
-  features,
+  selected = false,
+  includedFeatures,
   buttonText,
-  buttonVariant = 'outline-primary'
+  planId
 } = Astro.props;
+
+// Lista completa de servicios disponibles, agrupados por categoría
+const allServices = {
+  'Diseño y Desarrollo': [
+    'Landing page profesional',
+    'Sitio web completo',
+    'Diseño responsive',
+    'Optimización para móviles',
+    'Hasta 5 secciones personalizadas',
+    'Blog integrado',
+    'Panel de administración'
+  ],
+  'Funcionalidades': [
+    'Formulario de contacto básico',
+    'Formularios avanzados',
+    'Integración con redes sociales',
+    'Certificado SSL',
+    'Google Analytics'
+  ],
+  'SEO y Marketing': [
+    'Optimización SEO básica',
+    'SEO avanzado',
+    'Integración con Google Business'
+  ],
+  'Soporte y Extras': [
+    'Dominio .cl por 1 año',
+    '1 mes de soporte',
+    '3 meses de soporte',
+    '6 meses de soporte',
+    'Capacitación de uso'
+  ]
+};
 ---
 
 <div class="col-md-4">
-  <div class={`card h-100 shadow-lg border-0 position-relative pricing-card ${isPopular ? 'featured' : ''}`}>
+  <div 
+    class={`card h-100 shadow-lg border-0 position-relative pricing-card ${selected ? 'selected' : (isPopular ? 'featured' : '')}`}
+    data-plan-id={planId}
+    data-is-popular={isPopular.toString()}
+  >
     {isPopular && 
       <span class="position-absolute start-50 translate-middle badge rounded-pill bg-danger" style="top: -12px; z-index: 5;">
         Más Popular
       </span>
     }
-    <div class="card-body p-4">
-      <div class="text-center mb-4">
-        <h5 class="card-title fw-bold mb-3">{title}</h5>
-        <span class="badge bg-primary mb-3">{badge}</span>
+    <div class="card-body p-3">
+      <div class="text-center mb-3">
+        <h5 class="card-title fw-bold mb-2">{title}</h5>
+        <span class="badge bg-primary mb-2">{badge}</span>
         <h3 class="display-6 fw-bold mb-0">{price}</h3>
-        <p class="text-muted">CLP / único pago</p>
+        <p class="text-muted small mb-0">CLP / único pago</p>
       </div>
-      <ul class="list-unstyled mb-4">
-        {features.map(feature => (
-          <li class="mb-2">
-            <i class="bi bi-check-circle-fill text-primary me-2"></i>
-            {feature}
-          </li>
-        ))}
-      </ul>
-      <div class="text-center">
-        <a href="#contacto" class={`btn btn-${buttonVariant} btn-lg w-100`}>
+      
+      {/* Mostrar servicios por categoría */}
+      {Object.entries(allServices).map(([category, services]) => (
+        <div class="service-category mb-2">
+          <div class="category-header d-flex align-items-center pt-3">
+            <div class="category-icon me-2">
+              {category === 'Diseño y Desarrollo' && <i class="bi bi-code-square"></i>}
+              {category === 'Funcionalidades' && <i class="bi bi-gear"></i>}
+              {category === 'SEO y Marketing' && <i class="bi bi-graph-up"></i>}
+              {category === 'Soporte y Extras' && <i class="bi bi-headset"></i>}
+            </div>
+            <h6 class="category-title mb-0">{category}</h6>
+          </div>
+          <ul class="list-unstyled service-list mb-0 ps-4 mt-2">
+            {services.map(service => {
+              const isIncluded = includedFeatures.includes(service);
+              return (
+                <li class="d-flex align-items-center service-item">
+                  <i class={`bi ${isIncluded ? 'bi-check-circle-fill text-primary' : 'bi-circle text-muted'} me-2 small`}></i>
+                  <span class={`${isIncluded ? '' : 'text-muted'} small service-text`}>{service}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+
+      <div class="text-center mt-3">
+        <a 
+          href="#contacto" 
+          class={`btn ${selected ? 'btn-primary' : 'btn-outline-primary'} w-100`}
+          data-button-id={planId}
+        >
           {buttonText}
         </a>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  .pricing-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .pricing-card.featured {
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+    transform: translateY(-5px);
+  }
+
+  .pricing-card.selected {
+    border: 2px solid var(--bs-primary) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(var(--bs-primary-rgb), 0.175) !important;
+  }
+
+  /* Estilos para las categorías de servicios */
+  .service-category {
+    position: relative;
+  }
+
+  .category-header {
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+
+  .category-header:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.03);
+  }
+
+  .category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.1), rgba(var(--bs-primary-rgb), 0.05));
+    color: var(--bs-primary);
+  }
+
+  .category-icon i {
+    font-size: 0.875rem;
+  }
+
+  .category-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--bs-gray-700);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .service-list {
+    position: relative;
+  }
+
+  .service-item {
+    padding: 4px 0;
+    transition: background-color 0.2s ease;
+  }
+
+  .service-item:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.02);
+  }
+
+  .service-text {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.pricing-card');
+    const buttons = document.querySelectorAll('[data-button-id]');
+    
+    // Función para deseleccionar todas las tarjetas y resetear botones
+    const deselectAllCards = () => {
+      cards.forEach(c => {
+        c.classList.remove('selected');
+        // Si la tarjeta es popular y no está seleccionada, mostrar como featured
+        const isPopular = c.getAttribute('data-is-popular') === 'true';
+        if (isPopular && !c.classList.contains('selected')) {
+          c.classList.add('featured');
+        } else {
+          c.classList.remove('featured');
+        }
+      });
+      
+      // Resetear todos los botones a outline-primary
+      buttons.forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline-primary');
+      });
+    };
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        deselectAllCards();
+        // Agregar la clase selected y remover featured de la tarjeta clickeada
+        card.classList.add('selected');
+        card.classList.remove('featured');
+        
+        // Cambiar el botón de la tarjeta seleccionada a primary
+        const planId = card.getAttribute('data-plan-id');
+        const selectedButton = document.querySelector(`[data-button-id="${planId}"]`);
+        if (selectedButton) {
+          selectedButton.classList.remove('btn-outline-primary');
+          selectedButton.classList.add('btn-primary');
+        }
+        
+        // Disparar un evento personalizado con el plan seleccionado
+        const event = new CustomEvent('planSelected', { 
+          detail: { planId },
+          bubbles: true 
+        });
+        card.dispatchEvent(event);
+      });
+    });
+  });
+</script>
+
+<style>
+  .pricing-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+  }
+
+
+  .pricing-card.featured {
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+    transform: translateY(-5px);
+  }
+
+  .pricing-card.selected {
+    border: 2px solid var(--bs-primary) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(var(--bs-primary-rgb), 0.175) !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.pricing-card');
+    const buttons = document.querySelectorAll('[data-button-id]');
+    
+    // Función para deseleccionar todas las tarjetas y resetear botones
+    const deselectAllCards = () => {
+      cards.forEach(c => {
+        c.classList.remove('selected');
+        // Si la tarjeta es popular y no está seleccionada, mostrar como featured
+        const isPopular = c.getAttribute('data-is-popular') === 'true';
+        if (isPopular && !c.classList.contains('selected')) {
+          c.classList.add('featured');
+        } else {
+          c.classList.remove('featured');
+        }
+      });
+      
+      // Resetear todos los botones a outline-primary
+      buttons.forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline-primary');
+      });
+    };
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        deselectAllCards();
+        // Agregar la clase selected y remover featured de la tarjeta clickeada
+        card.classList.add('selected');
+        card.classList.remove('featured');
+        
+        // Cambiar el botón de la tarjeta seleccionada a primary
+        const planId = card.getAttribute('data-plan-id');
+        const selectedButton = document.querySelector(`[data-button-id="${planId}"]`);
+        if (selectedButton) {
+          selectedButton.classList.remove('btn-outline-primary');
+          selectedButton.classList.add('btn-primary');
+        }
+        
+        // Disparar un evento personalizado con el plan seleccionado
+        const event = new CustomEvent('planSelected', { 
+          detail: { planId },
+          bubbles: true 
+        });
+        card.dispatchEvent(event);
+      });
+    });
+  });
+</script>

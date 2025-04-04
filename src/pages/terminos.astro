@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Términos del Servicio - Codiva">
+  <main>
+    <div class="terms-header py-5 mb-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h1 class="terms-title">Términos del Servicio</h1>
+            <p class="terms-subtitle">Información legal y condiciones de los servicios profesionales</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 terms-content">
+          
+          <div class="terms-section">
+            <h2>Prestador del Servicio</h2>
+            <p>Los servicios son prestados por Carlos Andrés Monserrat Rojas Rojas, RUT 23.962.684-K, Ingeniero y Master en Ingeniería de Software, bajo la marca registrada Codiva.</p>
+          </div>
+
+          <div class="terms-section">
+            <h2>Naturaleza de los Servicios</h2>
+            <p>Se ofrecen servicios profesionales de desarrollo web que incluyen:</p>
+            <ul class="mb-3">
+              <li>Diseño y desarrollo de sitios web</li>
+              <li>Optimización SEO</li>
+              <li>Mantenimiento web</li>
+              <li>Soporte técnico</li>
+            </ul>
+            <p>Los servicios específicos y sus alcances se detallan en cada propuesta de trabajo individual.</p>
+          </section>
+
+          <div class="terms-section">
+            <h2>Modalidad de Contratación</h2>
+            <p>Los servicios se prestan bajo la modalidad de honorarios profesionales:</p>
+            <ul class="mb-3">
+              <li>Se emite boleta de honorarios por cada servicio prestado</li>
+              <li>Los precios están expresados en pesos chilenos</li>
+              <li>La retención de impuestos se aplica según la normativa vigente</li>
+              <li>Los pagos se realizan según los términos acordados en cada proyecto</li>
+            </ul>
+          </section>
+
+          <div class="terms-section">
+            <h2>Proceso de Trabajo</h2>
+            <p>El proceso estándar incluye:</p>
+            <ul class="mb-3">
+              <li>Propuesta detallada de servicios y costos</li>
+              <li>Acuerdo de términos y plazos por escrito</li>
+              <li>Anticipo inicial según lo acordado</li>
+              <li>Entregas parciales para revisión</li>
+              <li>Entrega final y pago del saldo restante</li>
+            </ul>
+          </section>
+
+          <div class="terms-section">
+            <h2>Garantías del Servicio</h2>
+            <p>Todos los servicios incluyen:</p>
+            <ul class="mb-3">
+              <li>Garantía de funcionamiento por el período establecido</li>
+              <li>Soporte técnico según los términos acordados</li>
+              <li>Correcciones de errores dentro del alcance definido</li>
+              <li>Documentación del trabajo realizado</li>
+            </ul>
+          </section>
+
+          <div class="terms-section">
+            <h2>Propiedad Intelectual</h2>
+            <p>Respecto a los derechos de autor:</p>
+            <ul class="mb-3">
+              <li>El cliente recibe los derechos de uso del sitio desarrollado</li>
+              <li>El desarrollador mantiene los derechos sobre el código base</li>
+              <li>El contenido proporcionado por el cliente mantiene sus derechos originales</li>
+            </ul>
+          </section>
+
+          <div class="terms-section">
+            <h2>Confidencialidad</h2>
+            <p>Se garantiza:</p>
+            <ul class="mb-3">
+              <li>Confidencialidad total sobre la información del cliente</li>
+              <li>No divulgación de datos sensibles</li>
+              <li>Uso de información solo para los fines acordados</li>
+              <li>Protección de datos según la ley vigente</li>
+            </ul>
+          </section>
+
+          <div class="terms-section">
+            <h2>Resolución de Conflictos</h2>
+            <p>En caso de discrepancias:</p>
+            <ul class="mb-3">
+              <li>Se privilegiará la resolución directa entre las partes</li>
+              <li>Se buscará una solución justa y profesional</li>
+              <li>Se someterá a la jurisdicción de los tribunales chilenos si fuera necesario</li>
+            </ul>
+          </section>
+
+          <div class="terms-footer">
+            <p class="terms-update">
+              Última actualización: {new Date().toLocaleDateString('es-CL')}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .terms-header {
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .terms-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--bs-gray-900);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .terms-subtitle {
+    font-size: 1.1rem;
+    color: var(--bs-gray-600);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .terms-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--bs-gray-700);
+  }
+
+  .terms-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .terms-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bs-gray-900);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.3px;
+  }
+
+  .terms-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .terms-section ul li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .terms-section ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--bs-primary);
+  }
+
+  .terms-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+
+  .terms-update {
+    font-size: 0.875rem;
+    color: var(--bs-gray-500);
+    margin: 0;
+  }
+</style>
