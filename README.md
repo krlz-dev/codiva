@@ -1,48 +1,58 @@
-# Astro Starter Kit: Basics
+# 🚀 Codiva - Soluciones Web para Negocios
 
-```sh
-npm create astro@latest -- --template basics
+[![Astro](https://img.shields.io/badge/Built%20with-Astro-0C1222?style=for-the-badge&logo=astro)](https://astro.build)
+
+Codiva es tu socio estratégico en la creación de sitios web profesionales para pequeños negocios y PyMEs. Transformamos tu presencia digital con soluciones web modernas, rápidas y efectivas.
+
+## 🎯 Nuestros Servicios
+
+- 💼 Sitios web profesionales para PyMEs
+- 🎨 Diseño web personalizado
+- 📱 Diseño responsive para todos los dispositivos
+- 🔧 Mantenimiento y soporte técnico
+- 🚀 Optimización SEO
+
+## 💫 ¿Por qué Codiva?
+
+- ✨ Diseños modernos y atractivos
+- 🔥 Alto rendimiento y velocidad de carga
+- 💪 Soluciones escalables
+- 🤝 Soporte personalizado
+- 💰 Precios competitivos
+
+## 🛠️ Tecnologías
+
+Nuestro stack tecnológico incluye:
+
+- [Astro](https://astro.build) - Framework web moderno
+- HTML5 y CSS3
+- JavaScript moderno
+- Optimización de rendimiento
+- SEO avanzado
+
+## 🚀 Desarrollo Local
+
+Para ejecutar este proyecto localmente:
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 📞 Contacto
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+¿Listo para transformar tu presencia digital? ¡Contáctanos!
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- 🌐 [www.codiva.com](https://www.codiva.com)
+- 📧 info@codiva.com
+- 📱 +123 456 789
 
-## 🚀 Project Structure
+## 📝 Licencia
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Copyright © 2025 Codiva. Todos los derechos reservados.
