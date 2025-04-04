@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  badge: string;
+  isPopular?: boolean;
+  features: string[];
+  buttonText: string;
+  buttonVariant?: 'primary' | 'outline-primary';
+}
+
+const {
+  title,
+  price,
+  badge,
+  isPopular = false,
+  features,
+  buttonText,
+  buttonVariant = 'outline-primary'
+} = Astro.props;
+---
+
+<div class="col-md-4">
+  <div class={`card h-100 shadow-lg border-0 position-relative pricing-card ${isPopular ? 'featured' : ''}`}>
+    {isPopular && 
+      <span class="position-absolute start-50 translate-middle badge rounded-pill bg-danger" style="top: -12px; z-index: 5;">
+        Más Popular
+      </span>
+    }
+    <div class="card-body p-4">
+      <div class="text-center mb-4">
+        <h5 class="card-title fw-bold mb-3">{title}</h5>
+        <span class="badge bg-primary mb-3">{badge}</span>
+        <h3 class="display-6 fw-bold mb-0">{price}</h3>
+        <p class="text-muted">CLP / único pago</p>
+      </div>
+      <ul class="list-unstyled mb-4">
+        {features.map(feature => (
+          <li class="mb-2">
+            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+            {feature}
+          </li>
+        ))}
+      </ul>
+      <div class="text-center">
+        <a href="#contacto" class={`btn btn-${buttonVariant} btn-lg w-100`}>
+          {buttonText}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
