@@ -1,5 +1,6 @@
 ---
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
 interface Props {
 	title?: string;
@@ -22,7 +23,7 @@ const { title = 'Codiva.cl - Servicios Profesionales de Desarrollo Web' } = Astr
 		<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" crossorigin="anonymous">
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+		<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 			<div class="container">
 				<a class="navbar-brand" href="/">Codiva</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,6 +62,8 @@ const { title = 'Codiva.cl - Servicios Profesionales de Desarrollo Web' } = Astr
 		display: flex;
 		flex-direction: column;
 		scroll-behavior: smooth;
+		background-color: var(--color-bg-primary);
+		color: var(--color-text-primary);
 	}
 
 	main {
@@ -71,17 +74,15 @@ const { title = 'Codiva.cl - Servicios Profesionales de Desarrollo Web' } = Astr
 	.pricing-card {
 		transition: all 0.3s ease;
 		border-radius: 1.25rem;
-		background: #fff;
+		background: var(--color-bg-secondary);
 		margin-top: 1rem;
+		border: 1px solid var(--color-border);
 	}
 
 	.pricing-card:hover {
 		transform: translateY(-10px);
 		box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
 	}
-
-
-
 
 	.pricing-card .badge {
 		padding: 0.5rem 1rem;
@@ -101,7 +102,7 @@ const { title = 'Codiva.cl - Servicios Profesionales de Desarrollo Web' } = Astr
 
 	.pricing-card .list-unstyled li {
 		padding: 0.625rem 0;
-		color: #495057;
+		color: var(--color-text-secondary);
 		display: flex;
 		align-items: center;
 	}
@@ -136,7 +137,7 @@ const { title = 'Codiva.cl - Servicios Profesionales de Desarrollo Web' } = Astr
 		transform: translateX(-50%);
 		width: 60px;
 		height: 2px;
-		background-color: var(--bs-primary);
+		background-color: var(--color-primary-500);
 		opacity: 0.3;
 	}
 </style>

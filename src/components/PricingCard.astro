@@ -61,16 +61,95 @@ const allServices = {
     data-is-popular={isPopular.toString()}
   >
     {isPopular && 
-      <span class="position-absolute start-50 translate-middle badge rounded-pill bg-danger" style="top: -12px; z-index: 5;">
-        Más Popular
-      </span>
+      <div class="position-absolute start-50 translate-middle" style="top: -15px; z-index: 5;">
+        <span class="vintage-badge">
+          <span class="vintage-badge-text">Recomendado</span>
+        </span>
+      </div>
     }
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+      .vintage-badge {
+        display: inline-block;
+        background: var(--color-primary-500);
+        padding: 0.5rem 1.25rem;
+        border-radius: 20px;
+        position: relative;
+        box-shadow: 
+          0 0 7px var(--color-primary-300),
+          0 0 10px var(--color-primary-300),
+          0 0 21px var(--color-primary-500);
+        animation: badge-glow 1.5s ease-in-out infinite alternate;
+      }
+
+      .vintage-badge::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 22px;
+        padding: 2px;
+        background: linear-gradient(45deg, 
+          var(--color-primary-300), 
+          var(--color-primary-500), 
+          var(--color-primary-300));
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0.8;
+        animation: border-glow 3s linear infinite;
+      }
+
+      .vintage-badge-text {
+        font-family: 'Satisfy', cursive;
+        font-size: 1.1rem;
+        color: white;
+        text-shadow:
+          0 0 7px rgba(255, 255, 255, 0.7),
+          0 0 10px rgba(255, 255, 255, 0.5),
+          0 0 21px var(--color-primary-300);
+        display: block;
+        transform: rotate(-5deg);
+      }
+
+      @keyframes badge-glow {
+        from {
+          box-shadow: 
+            0 0 5px var(--color-primary-300),
+            0 0 8px var(--color-primary-300),
+            0 0 15px var(--color-primary-500);
+        }
+        to {
+          box-shadow: 
+            0 0 7px var(--color-primary-300),
+            0 0 10px var(--color-primary-300),
+            0 0 21px var(--color-primary-500),
+            0 0 42px var(--color-primary-500);
+        }
+      }
+
+      @keyframes border-glow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
     <div class="card-body p-3">
       <div class="text-center mb-3">
-        <h5 class="card-title fw-bold mb-2">{title}</h5>
-        <span class="badge bg-primary mb-2">{badge}</span>
-        <h3 class="display-6 fw-bold mb-0">{price}</h3>
-        <p class="text-muted small mb-0">CLP / único pago</p>
+        <h5 class="card-title fw-semibold mb-2 text-light">{title}</h5>
+        <span class="badge bg-primary mb-2 fw-normal">{badge}</span>
+        <br> 
+        <h3 class="display-6 fw-semibold mb-0 text-light">{price}</h3>
+        <p class="text-muted small pt-2 fw-light">CLP / único pago</p>
       </div>
       
       {/* Mostrar servicios por categoría */}
@@ -78,20 +157,20 @@ const allServices = {
         <div class="service-category mb-2">
           <div class="category-header d-flex align-items-center pt-3">
             <div class="category-icon me-2">
-              {category === 'Diseño y Desarrollo' && <i class="bi bi-code-square"></i>}
-              {category === 'Funcionalidades' && <i class="bi bi-gear"></i>}
-              {category === 'SEO y Marketing' && <i class="bi bi-graph-up"></i>}
-              {category === 'Soporte y Extras' && <i class="bi bi-headset"></i>}
+              {category === 'Diseño y Desarrollo' && <i class="bi bi-code-square text-primary-300"></i>}
+              {category === 'Funcionalidades' && <i class="bi bi-gear text-primary-300"></i>}
+              {category === 'SEO y Marketing' && <i class="bi bi-graph-up text-primary-300"></i>}
+              {category === 'Soporte y Extras' && <i class="bi bi-headset text-primary-300"></i>}
             </div>
-            <h6 class="category-title mb-0">{category}</h6>
+            <h6 class="category-title mb-0 fw-medium">{category}</h6>
           </div>
           <ul class="list-unstyled service-list mb-0 ps-4 mt-2">
             {services.map(service => {
               const isIncluded = includedFeatures.includes(service);
               return (
                 <li class="d-flex align-items-center service-item">
-                  <i class={`bi ${isIncluded ? 'bi-check-circle-fill text-primary' : 'bi-circle text-muted'} me-2 small`}></i>
-                  <span class={`${isIncluded ? '' : 'text-muted'} small service-text`}>{service}</span>
+                  <i class={`bi ${isIncluded ? 'bi-check-circle-fill neon-check' : 'bi-circle text-muted'} me-2 small`}></i>
+                  <span class={`${isIncluded ? 'text-light fw-normal' : 'text-muted'} small service-text`}>{service}</span>
                 </li>
               );
             })}
@@ -116,21 +195,25 @@ const allServices = {
   .pricing-card {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--color-bg-secondary);
   }
 
   .pricing-card:hover {
     transform: translateY(-5px);
+    background-color: var(--color-bg-tertiary);
   }
 
   .pricing-card.featured {
-    border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+    border: 1px solid var(--color-primary-500);
     transform: translateY(-5px);
+    background-color: var(--color-bg-tertiary);
   }
 
   .pricing-card.selected {
-    border: 2px solid var(--bs-primary) !important;
+    border: 2px solid var(--color-primary-500) !important;
     transform: translateY(-5px);
-    box-shadow: 0 1rem 3rem rgba(var(--bs-primary-rgb), 0.175) !important;
+    box-shadow: 0 0.5rem 2rem rgba(138, 46, 255, 0.25) !important;
+    background-color: var(--color-bg-tertiary);
   }
 
   /* Estilos para las categorías de servicios */
@@ -143,29 +226,21 @@ const allServices = {
     transition: background-color 0.2s ease;
   }
 
-  .category-header:hover {
-    background-color: rgba(var(--bs-primary-rgb), 0.03);
-  }
-
   .category-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 24px;
-    height: 24px;
-    border-radius: 6px;
-    background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.1), rgba(var(--bs-primary-rgb), 0.05));
-    color: var(--bs-primary);
+    text-align: center;
   }
 
   .category-icon i {
-    font-size: 0.875rem;
+    color: var(--color-primary-300);
+    font-size: 1rem;
   }
 
   .category-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--bs-gray-700);
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-primary-200);
     letter-spacing: 0.3px;
     text-transform: uppercase;
   }
@@ -180,12 +255,21 @@ const allServices = {
   }
 
   .service-item:hover {
-    background-color: rgba(var(--bs-primary-rgb), 0.02);
+    background-color: var(--color-bg-tertiary);
   }
 
   .service-text {
-    font-size: 0.8125rem;
-    line-height: 1.4;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .neon-check {
+    color: var(--color-primary-300);
+    text-shadow: 0 0 10px rgba(138, 46, 255, 0.5),
+                0 0 20px rgba(138, 46, 255, 0.3),
+                0 0 30px rgba(138, 46, 255, 0.1);
+    filter: brightness(1.2);
   }
 </style>
 

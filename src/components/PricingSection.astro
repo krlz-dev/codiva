@@ -11,45 +11,13 @@ interface Plan {
   includedFeatures: string[];
   buttonText: string;
 }
-
-// Lista completa de servicios disponibles, agrupados por categoría
-const allServices = {
-  'Diseño y Desarrollo': [
-    'Landing page profesional',
-    'Sitio web completo',
-    'Diseño responsive',
-    'Optimización para móviles',
-    'Hasta 5 secciones personalizadas',
-    'Blog integrado',
-    'Panel de administración'
-  ],
-  'Funcionalidades': [
-    'Formulario de contacto básico',
-    'Formularios avanzados',
-    'Integración con redes sociales',
-    'Certificado SSL',
-    'Google Analytics'
-  ],
-  'SEO y Marketing': [
-    'Optimización SEO básica',
-    'SEO avanzado',
-    'Integración con Google Business'
-  ],
-  'Soporte y Extras': [
-    'Dominio .cl por 1 año',
-    '1 mes de soporte',
-    '3 meses de soporte',
-    '6 meses de soporte',
-    'Capacitación de uso'
-  ]
-};
-
+ 
 const plans: Plan[] = [
   {
     planId: 'basic',
-    title: 'Plan Básico',
-    price: '$149.900',
-    badge: 'Ideal para Emprendedores',
+    title: 'Plan Emprendedor',
+    price: '$249.000',
+    badge: 'Ideal para comenzar',
     includedFeatures: [
       'Landing page profesional',
       'Diseño responsive',
@@ -57,28 +25,35 @@ const plans: Plan[] = [
       'Formulario de contacto básico',
       'Certificado SSL',
       'Optimización SEO básica',
+      'Dominio .cl por 1 año',
       '1 mes de soporte'
     ],
     buttonText: 'Comenzar Ahora'
   },
   {
     planId: 'standard',
-    title: 'Plan Estándar',
-    price: '$299.900',
-    badge: 'Para Pequeñas Empresas',
+    title: 'Plan Pyme',
+    price: '$449.000',
+    badge: 'Negocios en expansión',
     isPopular: true,
     selected: true,
     includedFeatures: [
+      // Todo lo del Plan Emprendedor
       'Landing page profesional',
-      'Hasta 5 secciones personalizadas',
       'Diseño responsive',
       'Optimización para móviles',
+      'Formulario de contacto básico',
+      'Certificado SSL',
+      'Optimización SEO básica',
+      'Dominio .cl por 1 año',
+      '1 mes de soporte',
+
+      // Beneficios añadidos
+      'Hasta 5 secciones personalizadas',
       'Formularios avanzados',
       'Integración con redes sociales',
-      'Certificado SSL',
       'Google Analytics',
-      'Optimización SEO básica',
-      'Integración con Google Business',
+      'Blog integrado',
       '3 meses de soporte',
       'Capacitación de uso'
     ],
@@ -86,35 +61,47 @@ const plans: Plan[] = [
   },
   {
     planId: 'premium',
-    title: 'Plan Premium',
-    price: '$599.900',
-    badge: 'Solución Completa',
+    title: 'Plan Ecommerce',
+    price: '$689.000',
+    badge: 'Tienda online lista para vender',
     includedFeatures: [
-      'Sitio web completo',
-      'Blog integrado',
-      'Panel de administración',
+      // Todo lo del Plan Pyme
+      'Landing page profesional',
       'Diseño responsive',
       'Optimización para móviles',
+      'Formulario de contacto básico',
+      'Certificado SSL',
+      'Optimización SEO básica',
+      'Dominio .cl por 1 año',
+      'Hasta 5 secciones personalizadas',
       'Formularios avanzados',
       'Integración con redes sociales',
-      'Certificado SSL',
       'Google Analytics',
+      'Blog integrado',
+      '3 meses de soporte',
+      'Capacitación de uso',
+
+      // Beneficios añadidos
+      'Sitio web completo',
+      'Panel de administración',
+      'Carrito de compras',
+      'Integración WebPay o MercadoPago',
+      'Catálogo inicial hasta 30 productos',
       'SEO avanzado',
-      'Integración con Google Business',
-      'Dominio .cl por 1 año',
-      '6 meses de soporte',
-      'Capacitación de uso'
+      '6 meses de soporte'
     ],
     buttonText: 'Contactar'
   }
 ];
+
+
 
 ---
 
 <section class="container py-5" data-aos="fade-up" id="pricing-section">
   <div class="row justify-content-center">
     <div class="col-lg-8 text-center">
-      <h2 class="display-5 fw-bold mb-3">Nuestros Planes</h2>
+      <h2 class="display-5 fw-bold mb-3 text-light">Nuestros Planes</h2>
       <p class="lead text-muted mb-5">Elige el plan que mejor se adapte a tus necesidades</p>
     </div>
   </div>

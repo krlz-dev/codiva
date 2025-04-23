@@ -114,21 +114,21 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .terms-header {
-    background: linear-gradient(to right, #f8f9fa, #ffffff);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .terms-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--bs-gray-900);
+    color: var(--color-text-primary);
     margin-bottom: 1rem;
     letter-spacing: -0.5px;
   }
 
   .terms-subtitle {
     font-size: 1.1rem;
-    color: var(--bs-gray-600);
+    color: var(--color-text-secondary);
     max-width: 600px;
     margin: 0 auto;
   }
@@ -136,7 +136,7 @@ import Layout from '../layouts/Layout.astro';
   .terms-content {
     font-size: 1rem;
     line-height: 1.7;
-    color: var(--bs-gray-700);
+    color: var(--color-text-secondary);
   }
 
   .terms-section {
@@ -146,7 +146,7 @@ import Layout from '../layouts/Layout.astro';
   .terms-section h2 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--bs-gray-900);
+    color: var(--color-text-primary);
     margin-bottom: 1.25rem;
     letter-spacing: -0.3px;
   }
@@ -171,19 +171,19 @@ import Layout from '../layouts/Layout.astro';
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: var(--bs-primary);
+    background-color: var(--color-primary-500);
   }
 
   .terms-footer {
     margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid var(--color-border);
     text-align: center;
   }
 
   .terms-update {
     font-size: 0.875rem;
-    color: var(--bs-gray-500);
+    color: var(--color-text-tertiary);
     margin: 0;
   }
 </style>

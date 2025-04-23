@@ -1,0 +1,137 @@
+:root {
+  /* Dark Theme Background Colors */
+  --color-bg-primary: #13111c;    /* Main background */
+  --color-bg-secondary: #1a1825;  /* Slightly lighter background for cards/sections */
+  --color-bg-tertiary: #201d2c;   /* Even lighter for hover states */
+
+  /* Primary Purple Colors - Vibrant for dark theme */
+  --color-primary-100: #f0e6ff;
+  --color-primary-200: #d9baff;
+  --color-primary-300: #bf8dff;
+  --color-primary-400: #a55aff;
+  --color-primary-500: #8a2eff;   /* Main accent color */
+  --color-primary-600: #741fd4;
+  --color-primary-700: #5f16ad;
+  --color-primary-800: #4b1288;
+  --color-primary-900: #360c5c;
+
+  /* Secondary Colors - Neon teal for accents */
+  --color-secondary-100: #e0fcf9;
+  --color-secondary-200: #b0f1eb;
+  --color-secondary-300: #7de5dc;
+  --color-secondary-400: #4ad8cc;
+  --color-secondary-500: #26c2b8;
+  --color-secondary-600: #20a59c;
+  --color-secondary-700: #1b8981;
+  --color-secondary-800: #166d67;
+  --color-secondary-900: #125956;
+
+  /* Text Colors for Dark Theme */
+  --color-text-primary: #ffffff;     /* Main text */
+  --color-text-secondary: #b4b4bb;   /* Secondary text */
+  --color-text-tertiary: #848490;    /* Less important text */
+  
+  /* Borders and Dividers */
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Theme Base Styles */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Utility classes */
+.bg-dark-primary {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.bg-dark-secondary {
+  background-color: var(--color-bg-secondary) !important;
+}
+
+.bg-dark-tertiary {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+.bg-primary {
+  background-color: var(--color-primary-500) !important;
+}
+
+.bg-primary-light {
+  background-color: var(--color-primary-300) !important;
+}
+
+.text-primary {
+  color: var(--color-primary-300) !important;
+}
+
+.text-light {
+  color: var(--color-text-primary) !important;
+}
+
+.text-muted {
+  color: var(--color-text-tertiary) !important;
+}
+
+/* Dark Theme Components */
+.card {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.navbar {
+  background-color: var(--color-bg-primary) !important;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-primary-500) !important;
+  border-color: var(--color-primary-500) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-600) !important;
+  border-color: var(--color-primary-600) !important;
+}
+
+.btn-outline-primary {
+  color: var(--color-primary-300) !important;
+  border-color: var(--color-primary-300) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-primary-500) !important;
+  border-color: var(--color-primary-500) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Links */
+a {
+  color: var(--color-primary-300);
+}
+
+a:hover {
+  color: var(--color-primary-200);
+}
+
+/* Tables */
+.table {
+  color: var(--color-text-primary);
+}
+
+/* Form Controls */
+.form-control {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.form-control:focus {
+  background-color: var(--color-bg-tertiary);
+  border-color: var(--color-primary-500);
+  color: var(--color-text-primary);
+}
